@@ -19,7 +19,7 @@ App({
             title: '提示',
             content: '请授权我们获取您的用户信息',
             showCancel: false,
-            success: () => {
+            /*success: () => {
               wx.openSetting({
                 success: res => {
                   if (res.authSetting['scope.userInfo'] === true) {
@@ -27,7 +27,7 @@ App({
                   }
                 }
               })
-            }
+            }*/
           })
         } else {
           this.doQcloudLogin({ success, error })
