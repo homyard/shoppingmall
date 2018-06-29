@@ -34,6 +34,10 @@ var config = {
         addOrder: `${host}/weapp/order`,
         
         orderList: `${host}/weapp/order`,
+      
+        addTrolley: `${host}/weapp/trolley`,
+        // 获取购物车商品列表
+        trolleyList: `${host}/weapp/trolley`,
     }
 };
 
