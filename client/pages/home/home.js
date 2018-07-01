@@ -49,7 +49,6 @@ addToTrolley(event) {
       },
       success: result => {
         let data = result.data
-
         if (!data.code) {
           wx.showToast({
             title: '已添加到购物车',
