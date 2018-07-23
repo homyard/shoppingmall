@@ -2,7 +2,7 @@
 
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
-
+const _ = require('../../utils/util')
 
 Page({
 
@@ -10,9 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    product: {
-    },
-    haveComment: true
+    product: {},
   },
 
   getProduct(id) {
@@ -24,6 +22,7 @@ Page({
       url: config.service.productDetail + id,
       success: result => {
         wx.hideLoading()
+
         let data = result.data
         console.log(data);
 
@@ -46,7 +45,6 @@ Page({
       }
     })
   },
-
 
   buy() {
     wx.showLoading({
@@ -129,9 +127,10 @@ Page({
     })
 
   },
+
   onTapCommentEntry() {
     let product = this.data.product
-    if (this.data.haveComment) {
+    if (product.commentCount) {
       wx.navigateTo({
         url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`
       })

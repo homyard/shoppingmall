@@ -12,10 +12,24 @@ module.exports = {
 
     let productId = +ctx.request.body.product_id
     let content = ctx.request.body.content || null
+
     if (!isNaN(productId)) {
       await DB.query('INSERT INTO comment(user, username, avatar, content,  product_id) VALUES (?, ?, ?, ?, ?)', [user, username, avatar, content, productId])
     }
 
     ctx.state.data = {}
-  }
+  },
+
+  /**
+   * 获取评论列表
+   */
+  list: async ctx => {
+    let productId = +ctx.request.query.product_id
+
+    if (!isNaN(productId)) {
+      ctx.state.data = await DB.query('select * from comment where comment.product_id = ?', [productId])
+    } else {
+      ctx.state.data = []
+    }
+  },
 }
